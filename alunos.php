@@ -11,7 +11,7 @@ function calcularMedia(array $turma)
 
     return $media;
 }
-
+//
 // function maiorNota(array $turma){
 //     $soma = 0;
 //     foreach($turma as $aluno){

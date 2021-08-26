@@ -1,5 +1,5 @@
 <?php
-
+//
     $frutas = [
         "Banana",
         "Maçã",
