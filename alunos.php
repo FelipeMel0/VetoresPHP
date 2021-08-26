@@ -38,16 +38,16 @@ function maiorNota(array $turma){
     return $melhorAluno;
 }
 
-// function alterarNota(array $turma, $nome, $novaNota){
-//     $novaNota = 10;
-//     $nome = "Tomato";
-//     foreach($turma as $aluno){
-//         if($aluno["nome"] !== null){
-//             $aluno["nome"] = $nome;
-//         }
+function alterarNota(array $turma, $nome, $novaNota){
+ 
+    foreach($turma as $chave => $aluno){
+        if($aluno["nome"] == $nome){
+            $turma[$chave]["nota"] = $novaNota;
+            return;
+        }
 
-//     }
-// }
+    }
+}
 
 // function situacaoAluno(array $turma){
 //     $situacao = null;
@@ -86,6 +86,12 @@ $alunosTurmaA = [
         "nota" => 10
     ]
 ];
+
+alterarNota($alunosTurmaA, "Roberto", "45");
+
+print_r($alunosTurmaA);
+
+echo "<br>";
 
 $media = calcularMedia($alunosTurmaA);
 
