@@ -24,28 +24,27 @@ function calcularMedia(array $turma)
 //     return $soma;
 // }
 
-function maiorNota(array $turma){
+function maiorNota(array $turma)
+{
     $melhorAluno = null;
-    foreach($turma as $aluno){
-        if($melhorAluno == null){
+    foreach ($turma as $aluno) {
+        if ($melhorAluno == null) {
+            $melhorAluno = $aluno;
+        } elseif ($aluno["nota"] > $melhorAluno["nota"]) {
             $melhorAluno = $aluno;
         }
-        elseif($aluno["nota"] > $melhorAluno["nota"]){
-            $melhorAluno = $aluno;
-        }
-        
     }
     return $melhorAluno;
 }
 
-function alterarNota(array $turma, $nome, $novaNota){
- 
-    foreach($turma as $chave => $aluno){
-        if($aluno["nome"] == $nome){
+function alterarNota(array &$turma, $nome, $novaNota)
+{
+
+    foreach ($turma as $chave => $aluno) {
+        if ($aluno["nome"] == $nome) {
             $turma[$chave]["nota"] = $novaNota;
             return;
         }
-
     }
 }
 
@@ -53,7 +52,7 @@ function alterarNota(array $turma, $nome, $novaNota){
 //     $situacao = null;
 //     foreach($turma as $aluno){
 //         if($aluno["nota"] > 50){
-            
+
 //         }
 //     }
 // }
@@ -87,7 +86,7 @@ $alunosTurmaA = [
     ]
 ];
 
-alterarNota($alunosTurmaA, "Roberto", "45");
+alterarNota($alunosTurmaA, "Roberto", 666);
 
 print_r($alunosTurmaA);
 
