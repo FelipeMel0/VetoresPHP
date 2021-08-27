@@ -11,18 +11,6 @@ function calcularMedia(array $turma)
 
     return $media;
 }
-//
-// function maiorNota(array $turma){
-//     $soma = 0;
-//     foreach($turma as $aluno){
-//         if($aluno["nota"] > $soma){
-
-//             $soma = $aluno["nota"];
-
-//         } 
-//     }
-//     return $soma;
-// }
 
 function maiorNota(array $turma)
 {
@@ -48,53 +36,66 @@ function alterarNota(array &$turma, $nome, $novaNota)
     }
 }
 
-// function situacaoAluno(array $turma){
-//     $situacao = null;
-//     foreach($turma as $aluno){
-//         if($aluno["nota"] > 50){
+function situacaoAluno(array &$turma)
+{
 
-//         }
-//     }
-// }
+    foreach ($turma as $chave => $aluno) {
 
+        if ($aluno["nota"] >= 50) {
+
+            $turma[$chave]["situacao"] = "Apavorado";
+        } else {
+            $turma[$chave]["situacao"] = "Delegado";
+        }
+    }
+}
 
 $alunosTurmaA = [
     "1" => [
         "nome" => "Roberto",
         "idade" => 16,
-        "nota" => 30
+        "nota" => 10,
     ],
     "2" => [
         "nome" => "Silas",
         "idade" => 16,
-        "nota" => 100
+        "nota" => 100,
     ],
     "3" => [
         "nome" => "Saxofone",
         "idade" => 16,
-        "nota" => 460
+        "nota" => 460,
     ],
     "4" => [
         "nome" => "Ventilador",
         "idade" => 17,
-        "nota" => 5
+        "nota" => 5,
     ],
     "5" => [
         "nome" => "Jorge",
         "idade" => 170,
-        "nota" => 10
+        "nota" => 10,
     ]
 ];
 
-alterarNota($alunosTurmaA, "Roberto", 666);
+
+alterarNota($alunosTurmaA, "Roberto", 56);
+
+//Situação dos alunos da Turma A
+
+situacaoAluno($alunosTurmaA);
 
 print_r($alunosTurmaA);
 
 echo "<br>";
+echo "<br>";
+
+//Média da Turma A
 
 $media = calcularMedia($alunosTurmaA);
 
 echo "A média da turma A é $media - ";
+
 
 $alunosTurmaB = [
     "1" => [
@@ -124,6 +125,8 @@ $alunosTurmaB = [
     ]
 ];
 
+//Média da Turma B
+
 $media = calcularMedia($alunosTurmaB);
 
 echo "A média da turma B é $media - ";
@@ -138,6 +141,16 @@ $melhorAluno = maiorNota($alunosTurmaB);
 
 echo "Melhor estudante da Turma B: " . $melhorAluno["nome"];
 
+//Situação dos alunos da Turma B
+
+echo "<br>";
+echo "<br>";
+
+situacaoAluno($alunosTurmaB);
+
+print_r($alunosTurmaB);
+
+echo "<br>";
 
 // $notaAlterada = alterarNota($alunosTurmaB);
 
